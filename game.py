@@ -1,15 +1,12 @@
+# pylint: disable=too-few-public-methods
 """ Find longest word game """
 
 import random
 import string
+import requests
 
 class Game:
     """ Find longest word game """
-
-    @property
-    def grid(self):
-        """ random chars """
-        return self.grid
 
     def __init__(self):
         """  init """
@@ -19,7 +16,19 @@ class Game:
 
     def is_valid(self, word):
         """ check if a gusssing word is valid for grid """
-        list1=self.grid
-        list2=word
-        result =  all(elem.upper() in list1  for elem in list2)
-        return result
+        if not word:
+            return False
+        letters = self.grid.copy() # Consume letters from the grid
+        for letter in word:
+            if letter in letters:
+                letters.remove(letter)
+            else:
+                return False
+        return self.__check_dictionary(word)
+
+    @staticmethod
+    def __check_dictionary(word):
+        """ check if a gusssing word is in dictionary """
+        response = requests.get(f"https://wagon-dictionary.herokuapp.com/{word}")
+        json_response = response.json()
+        return json_response['found']
