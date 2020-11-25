@@ -12,6 +12,7 @@ nose = "*"
 pylint = "*"
 astroid = "*"
 requests = "*"
+flask-session = "*"
 
 [requires]
 python_version = "3.9"

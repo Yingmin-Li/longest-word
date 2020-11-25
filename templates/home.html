@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <h1>Longest Word</h1>
+    <h1>Longest Word: Current score <span class="valid">{{ score }}</span></h1>
     <div>
       {% for letter in grid %}
         <span class="letter">{{ letter }}</span>
       {% endfor %}
+
     </div>
     <form action="/check" id="form" method="post">
       <input type="hidden" name="grid" value="{{ ''.join(grid) }}">
