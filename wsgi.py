@@ -11,11 +11,14 @@ SESSION_TYPE = 'filesystem'
 app.config.from_object(__name__)
 Session(app)
 
-
 @app.route('/')
 def home():
+    if not 'score' in session:
+        session['score']=0
+
     game = Game(session['score'])
     return render_template('home.html', curr_score=0, score=session['score'], grid=game.grid)
+
 
 @app.route('/check', methods=["POST"])
 def check():
