@@ -37,8 +37,10 @@ class Game:
                 return False
 
         # increment only is_valid==True
-        self.curr_score=curr_score
-        return self.__check_dictionary(word)
+        is_word = self.__check_dictionary(word)
+        if is_word:
+            self.curr_score=curr_score
+        return is_word
 
 
     #@property # https://www.artima.com/forums/flat.jsp?forum=122&thread=153649
