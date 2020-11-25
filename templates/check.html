@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <h1>Longest Word</h1>
+    <h1>Longest Word: Current score <span class="valid">{{ score }}</span></h1>
     <h2>Result</h2>
     <div>
       {% for letter in grid %}
@@ -17,9 +17,9 @@
     <div id="results">
       Your word: <strong>{{ word }}</strong>.
       {% if is_valid %}
-        <span class="valid">Congrats, it's valid!</span>
+        <span class="valid">Congrats, it's valid! You won {{curr_score}}.</span>
       {% else %}
-        <span class="invalid">Sorry, it's invalid...</span>
+        <span class="invalid">Sorry, it's invalid.</span>
       {% endif %}
     </div>
     <div>

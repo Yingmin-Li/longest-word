@@ -11,6 +11,9 @@ class TestGame(unittest.TestCase):
         for letter in grid:
             self.assertIn(letter, string.ascii_uppercase)
 
+        self.assertIs(new_game.Score(), 0)
+        self.assertIs(new_game.CurrScore(), 0)
+
     def test_empty_word_is_invalid(self):
         new_game = Game()
         self.assertIs(new_game.is_valid(''), False)
